@@ -1,0 +1,394 @@
+# file name: main.py
+#: import GridLayout kivy.uix.gridlayout
+#: import StackLayout kivy.uix.stacklayout 
+#: import PageLayout kivy.uix.pagelayout
+#: import hex kivy.utils.get_color_from_hex
+#: import runTouchApp kivy.base
+#: import Label kivy.uix.label
+#: import Button kivy.uix.button
+#: import NumericProperty kivy.properties
+#: import ScreenManager kivy.uix.screenmanager
+#: import Screen kivy.uix.screenmanager
+#: set default_font_size "40sp"
+
+ScreenManagement:
+	ScreenOne:
+	ScreenTwo:
+	ScreenThree:
+	ScreenFour:
+	ScreenFive:
+<ScreenOne>:
+	name: "ScreenOne"
+    GridLayout:
+        rows: 5
+        canvas:
+            Color:
+                rgba: hex('#C1FFC1')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+     
+		Image:
+            source: 'assets/img/kidscode.png'
+            opacity: '10'
+        BoxLayout:
+            Label:
+                text: ''
+            Label:
+                text: 'KidsCode AI System'
+				font_size:default_font_size
+            Label:
+                text:''
+		BoxLayout:
+		    spacing: 150
+            padding: (40,30,40,30)
+            
+            Image:
+                source: 'c.png'
+                
+            Image:
+                source: 'gg.png'
+                
+            Image:
+                source: 'mm.png'
+		    Image:
+			    source:'pp.png'            
+        BoxLayout:	
+            Label:
+                text:''
+            Button:
+                center: self.parent.center
+                font_size: 14
+                height: 10
+                background_color: (0.97, 0.99, 0.97, 0.5)
+				text: "Create dataset"
+				on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.transition.duration = 1
+                    root.manager.current = 'ScreenTwo'
+            Label:
+                text: ''
+			Label:
+                text:''
+				
+			Button:
+                center: self.parent.center
+                font_size: 14
+                height: 10
+                background_color: (0.97, 0.99, 0.97, 0.5)
+                text: "Preprocessing"
+				on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.transition.duration = 1
+                    root.manager.current = 'ScreenThree'
+          
+			Label:
+                text:''
+			Label:
+                text:''	
+			Button:
+                center: self.parent.center
+                font_size: 14
+                height: 10
+                background_color: (0.97, 0.99, 0.97, 0.5)
+                text: "Train Network"
+				on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.transition.duration = 1
+                    root.manager.current = 'ScreenFour'
+            Label:
+                text:''
+			Label:
+                text:''	
+			Button:
+                center: self.parent.center
+                font_size: 14
+                height: 10
+                background_color: (0.97, 0.99, 0.97, 0.5)
+				text: "Test Network"
+				on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.transition.duration = 1
+                    root.manager.current = 'ScreenFive'
+            Label:
+                text:''	
+
+
+			
+        BoxLayout:
+            Label:
+                text: ''
+            Label:
+                text: ''
+            Label:
+                text:''
+<ScreenTwo>:
+    display: C_entry
+	name: "ScreenTwo" 
+    GridLayout:   
+        rows: 8
+        canvas:
+            Color:
+                rgb: 0.97, 0.99, 0.97, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+             
+            Image:
+                source: 'assets/img/kidscode.png'
+                opacity: '10'
+               
+            
+                
+        BoxLayout:
+            Label:
+                text: 'CREATE DATASET'
+				color: [0.2, 0.2, 0.2, 0.5]
+		BoxLayout:
+            Label:
+                text: '                       '		
+        BoxLayout:
+            Button:
+				text: 'Take Photos'
+                
+				on_press: root.create_dataset()
+				
+			Label:
+                id: C_entry
+                color: [0.2, 0.2, 0.2, 0.5]	
+            Image:
+                source: 'cc.png'
+       
+      
+		BoxLayout:
+		    Label:
+                text: '                       '
+        BoxLayout:
+            Button:
+                text: "preprocessing"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenThree'
+            Button:
+                text: "Train Network"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenFour'
+            Button:
+                text: "Test Network"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenFive'
+			Button:
+                text: "home"
+                on_press:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'ScreenOne'		
+<ScreenThree>:
+    ener:e_entry
+	name: "ScreenThree"
+    GridLayout:   
+        rows: 8
+        canvas:
+            Color:
+                rgb: 0.97, 0.99, 0.97, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+             
+            Image:
+                source: 'assets/img/kidscode.png'
+                opacity: '10'
+               
+            
+        BoxLayout:
+            Label:
+                text: 'PREPROCESSING DATASET'
+				color: [0.2, 0.2, 0.2, 0.5]        
+        BoxLayout:
+            Label:
+                text: '                                                             '
+        BoxLayout:
+            Button:
+				text: 'Preprocessing'
+                
+				on_press: root.preprocessing_img()
+			Label:
+                id: e_entry	
+				color: [0.2, 0.2, 0.2, 0.5]
+            Image:
+                source: 'll.png'
+       
+       
+		BoxLayout:
+            Label:
+                text: ''
+					
+        BoxLayout:
+            Button:
+                text: "Create Dataset"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenTwo'
+            Button:
+                text: "Train Network"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenFour'
+            Button:
+                text: "Test Network"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenFive'
+			Button:
+                text: "home"
+                on_press:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'ScreenOne'
+
+<ScreenFour>:
+	name: "ScreenFour"
+    GridLayout:   
+        rows: 8
+        canvas:
+            Color:
+                rgb: 0.97, 0.99, 0.97, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+             
+            Image:
+                source: 'assets/img/kidscode.png'
+                opacity: '10'
+               
+            
+                
+        BoxLayout:
+            Label:
+                text: 'TRAIN NETWORK'
+				color: [0.2, 0.2, 0.2, 0.5]
+		BoxLayout:
+            Label:
+                text: ''		
+        BoxLayout:
+            Button:
+				text: 'Train model'
+                on_press: root.Train_Model()
+                
+			Label:
+                text: ''	
+            Image:
+                source: 'assets/img/loss.png'
+        BoxLayout:
+            Button:
+				text: 'Test accuracy'
+                on_press: root.Test_Acc()
+                
+			Label:
+                text: ''	
+            Image:
+                source: 'mm.png'
+       
+       
+		BoxLayout:
+            Label:
+                text: ''		
+        BoxLayout:
+            Button:
+                text: "Create Dataset"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenTwo'
+            Button:
+                text: "Preprocessing"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenThree'
+            
+            Button:
+                text: "Test Network"
+                on_press:
+                    root.manager.transition.direction = 'right'
+					root.manager.current = 'ScreenFive'
+			Button:
+                text: "home"
+                on_press:
+                    root.manager.transition.direction = 'right'
+					root.manager.current = 'ScreenOne'
+			
+<ScreenFive>:
+    ss:a_entry
+	sss:score
+	name: "ScreenFive"
+    GridLayout:   
+        rows: 8
+        canvas:
+            Color:
+                rgb: 0.97, 0.99, 0.97, 0.5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+             
+            Image:
+                source: 'assets/img/kidscode.png'
+                opacity: '10'
+               
+            
+                
+        BoxLayout:
+            Label:
+                text: 'TEST NETWORK'
+				color: [0.2, 0.2, 0.2, 0.5]
+		BoxLayout:
+            Button:
+				text: 'take photos'
+                on_press: root.s1()
+			Label:
+                id:a_entry
+                color: [1, 0, 0, 1]
+                				
+            Image:
+                source: 'p.png'		
+        BoxLayout:
+            Button:
+				text: 'output'
+                on_press: root.output()
+			Label:
+                id:score
+                color: [1, 0, 0, 1]	
+            Image:
+                source: 'p.png'
+       
+      
+		BoxLayout:
+            Label:
+                text: ''		
+        BoxLayout:
+            Button:
+                text: "Create Dataset"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenTwo'
+            Button:
+                text: "Preprocessing"
+                on_press:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'ScreenThree'
+            
+            Button:
+                text: "Train Network"
+                on_press:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'ScreenFour'
+
+			Button:
+                text: "home"
+                on_press:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = 'ScreenOne'					
+					
+            	       
